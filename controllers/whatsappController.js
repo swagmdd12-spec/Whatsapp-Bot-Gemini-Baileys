@@ -92,17 +92,12 @@ const connectToWhatsApp = async () => {
       await sock.readMessages([messages[0].key]);
 
       // Check if the message contains '.bot'
-      if (pesan.includes("/bot")) {
-        const response = await generate(pesan);
-        await sock.sendMessage(
-          noWa,
-          { text: response },
-          { quoted: messages[0] }
-        );
-      }
-    }
-  });
-};
+      const response = await generate(pesan);
+await sock.sendMessage(
+  noWa,
+  { text: response },
+  { quoted: messages[0] }
+);
 
 const deleteAuthData = () => {
   try {
